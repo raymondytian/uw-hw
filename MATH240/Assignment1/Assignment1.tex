@@ -1,0 +1,270 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[margin=.75in,top=1in,bottom=.5in]{geometry}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{xpatch}
+\usepackage{fix-cm}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{titlesec}
+\usepackage{soul}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\newpg}{\vspace{5mm}}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{gray75}{gray}{0.75}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\textsc{Raymond Tian}}
+\fancyfoot[C]{\thepage}
+\setlength{\footskip}{0mm}
+\titleformat{\chapter}[display]{\filleft\Huge\bfseries}{\fontsize{100}{100}\selectfont\textcolor{black}\thechapter}{1ex}{}[]
+\titleformat*{\section}{\LARGE\bfseries}
+\DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Notes on Introductory Discrete Mathematics}
+\author{Raymond Tian}
+\date{December 23, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}  
+\begin{center}
+\textsc{\LARGE University of Wisconsin---Madison}\\[1.5cm] 
+\includegraphics[scale=.1]{../../images/uw-logo.png}\\[1cm] 
+\textsc{\Large Introduction to Discrete Mathematics}\\[0.5cm] 
+\textsc{\large Math 240}\\[0.5cm] 
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 1}\\[0.4cm] 
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Raymond \textsc{Tian}\\ 
+\end{flushleft}
+
+\end{minipage}\\[2cm]
+
+{\large \today}\\[2cm] 
+
+\vfill 
+
+\end{center}
+\end{titlepage}
+
+\pagestyle{empty}
+\newpage
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Question 1 [5 points]}
+In the following question the variables correspond to students who show up for a test. Consider the following predicates. 
+\begin{itemize}
+    \item $P(x)$ is "$x$ showed up with a pencil".
+    \item $Q(x)$ is "$x$ showed up with a calculator".
+\end{itemize}
+Translate each of the statements below into a logical expression. Negate the expressions and apply De Morgan's laws until the negation operation applies directly to a predicate. Then translate the logical expression back into English. \\[\baselineskip]
+\noindent\textbf{1. Every student showed up with a pencil or a calculator (or both).} 
+\\[\baselineskip]
+This statement translates to the logical expression $\forall x (P(x) \lor Q(x))$. Negating this statement gives us $\neg \forall x (P(x) \lor Q(x))$, which is logically equivalent to $\exists x (\neg(P(x) \lor Q(x)))$ by De Morgan's laws for quantifiers, which is logically equivalent to $\exists x (\neg P(x) \land \neg Q(x))$ by De Morgan's laws. Translating this logical expression back to English gives us ``there exists a student who did not show up with a pencil and did not show up with a calculator." 
+\\[\baselineskip]
+\noindent\textbf{2. Every student who showed up with a calculator also had a pencil.} 
+\\[\baselineskip]
+This statement translates to the logical expression $\forall x (Q(x) \implies P(x))$. Negating this statement gives us $\neg \forall x (Q(x) \implies P(x))$, which is logically equivalent to $\exists x (\neg (Q(x) \implies P(x)))$ by De Morgan's laws for quantifiers, which is logically equivalent to $\exists x (\neg (\neg Q(x) \lor P(x)))$ by the conditional identity, which is logically equivalent to $\exists x (\neg \neg Q(x) \land \neg P(x))$ by De Morgan's laws, which is logically equivalent to $\exists x (Q(x) \land \neg P(x))$ by the double negation law. Translating this logical expression back to English gives us ``there exists a student who showed up with a calculator and did not show up with a pencil."
+\\[\baselineskip]
+\noindent\textbf{3. Every student showed up with a pencil and a calculator.}
+\\[\baselineskip]
+This statement translates to the logical expression $\forall x (P(x) \land Q(x))$. Negating this statement gives us $\neg \forall x (P(x) \land Q(x))$, which is logically equivalent to $\exists x (\neg (P(x) \land Q(x)))$ by De Morgan's laws for quantifiers, which is logically equivalent to $\exists x (\neg P(x) \lor \neg Q(x))$ by De Morgan's laws. Translating this logical expression back to English gives us ``there exists a student who did not show up with a pencil or did not show up with a calculator."
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Question 2 [5 points]}
+Write down the truth table for the following logical expressions:
+\\[\baselineskip]
+\noindent\textbf{1. $R \lor (P \land (\neg Q))$} 
+\\[\baselineskip]
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    $P$ & $Q$ & $R$ & $R \lor (P \land (\neg Q))$ \\
+    \hline
+    \hline
+    $T$ & $T$ & $T$ & $T$ \\
+    \hline
+    $T$ & $T$ & $F$ & $F$ \\
+    \hline
+    $T$ & $F$ & $T$ & $T$ \\
+    \hline
+    $T$ & $F$ & $F$ & $T$ \\
+    \hline
+    $F$ & $T$ & $T$ & $T$ \\
+    \hline
+    $F$ & $T$ & $F$ & $F$ \\
+    \hline
+    $F$ & $F$ & $T$ & $T$ \\
+    \hline
+    $F$ & $F$ & $F$ & $F$ \\
+    \hline
+\end{tabular}
+\\[\baselineskip]
+\noindent\textbf{2. $((\neg P) \land Q) \implies P$} 
+\\[\baselineskip]
+\begin{tabular}{|c|c|c|c|}
+    \hline
+    $P$ & $Q$ & $(\neg P) \land Q$ & $((\neg P) \land Q) \implies P$ \\
+    \hline
+    \hline
+    $T$ & $T$ & $F$ & $T$ \\
+    \hline
+    $T$ & $F$ & $F$ & $T$ \\
+    \hline
+    $F$ & $T$ & $T$ & $F$ \\
+    \hline
+    $F$ & $F$ & $F$ & $T$ \\
+    \hline
+\end{tabular}
+\\[\baselineskip]
+\noindent\textbf{3. $(P \lor Q) \iff (Q \land P)$} 
+\\[\baselineskip]
+\begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $P$ & $Q$ & $(P \lor Q)$ & $(Q \land P)$ & $(P \lor Q) \iff (Q \land P)$ \\
+    \hline
+    \hline
+    $T$ & $T$ & $T$ & $T$ & $T$ \\
+    \hline
+    $T$ & $F$ & $T$ & $F$ & $F$ \\
+    \hline
+    $F$ & $T$ & $T$ & $F$ & $F$ \\
+    \hline
+    $F$ & $F$ & $F$ & $F$ & $T$ \\
+    \hline
+\end{tabular}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Question 3 [5 points]}
+Use the laws of propositional logic to show that the following logic equivalences hold. You must state the name of every law of propositional logic that you use and when you are using it.
+\\[\baselineskip]
+\noindent\textbf{1. $(P \implies Q) \land (P \implies R) \equiv P \implies (Q \land R)$}
+\\[\baselineskip]
+$(P \implies Q) \land (P \implies R)$
+\begin{align}
+    &\equiv (\neg P \lor Q) \land (P \implies R) &\text{\indent by the conditional identity} \\
+    &\equiv (\neg P \lor Q) \land (\neg P \lor R) &\text{\indent by the conditional identity} \\
+    &\equiv (\neg P) \lor (Q \land R) &\text{\indent by the distributive laws} \\
+    &\equiv P \implies (Q \land R) &\text{\indent by the conditional identity}
+\end{align} 
+\\[\baselineskip]
+\noindent\textbf{2. $\neg (P \lor ((\neg P) \land Q)) \equiv (\neg P) \land (\neg Q$)} 
+\\[\baselineskip]
+$\neg (P \lor ((\neg P) \land Q))$
+\begin{align}
+    &\equiv \neg P \land \neg ((\neg P) \land Q) &\text{\indent by De Morgan's law} \\
+    &\equiv \neg P \land (\neg \neg P \lor \neg Q) &\text{\indent by De Morgan's law} \\
+    &\equiv \neg P \land (P \lor \neg Q) &\text{\indent by the double negation law} \\
+    &\equiv \neg P \land P \lor \neg P \land \neg Q &\text{\indent by the distributive laws} \\
+    &\equiv P \land \neg P \lor \neg P \land \neg Q &\text{\indent by the commutative laws} \\
+    &\equiv F \lor \neg P \land \neg Q &\text{\indent by the complement laws} \\
+    &\equiv \neg P \land \neg Q \lor F &\text{\indent by the commutative laws} \\
+    &\equiv (\neg P) \land (\neg Q) &\text{\indent by the identity laws}
+\end{align}
+\footnotesize{Note: there are places in this solution and other solutions where I did not use parentheses when they are not necessary}
+\\[\baselineskip]
+\noindent\textbf{3. $\neg (\forall x ((\neg P(x)) \implies Q(x))) \equiv \exists x ((\neg P(x)) \land (\neg Q(x)))$} 
+\\[\baselineskip]
+$\neg (\forall x ((\neg P(x)) \implies Q(x)))$
+\begin{align}
+    &\equiv \exists x (\neg (\neg P(x) \implies Q(x))) &\text{\indent by De Morgan's law for quantifiers} \\
+    &\equiv \exists x (\neg (P(x) \lor Q(x))) &\text{\indent by the conditional identity} \\
+    &\equiv \exists x (\neg P(x) \land \neg Q(x)) &\text{\indent by De Morgan's law} \\
+    &\equiv \exists x ((\neg P(x)) \land (\neg Q(x)))
+\end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Question 4 [5 points]}
+Prove or disprove the following statements. 
+\\[\baselineskip]
+\noindent\textbf{1. For every integer $x$, $x^2 > 0$.}
+\begin{proof} 
+    $ $\\
+    Suppose that $x = 0$, which is an integer. If we substitute $x = 0$ into $x^2 > 0$, we get $0^2 > 0$, which is equivalent to $0 > 0$, which is false. Therefore, $x^2 > 0$ is not true for all integers $x$ by counterexample.
+\end{proof} 
+\noindent\textbf{2. For every integer $x$, there exists an integer $y$ such that, for every integer $z$, $z = 3(x - y)$.} 
+\begin{proof}
+    $ $\\ 
+    Suppose that $x$, $y$, and $z$ are integers. If we divide both sides of the equation $z=3(x-y)$ by $3$, we get $\frac{z}{3}=(x-y)$. Since $x$ and $y$ are integers, $\frac{z}{3}$ must be an integer. However, if $z = 1$, then $\frac{z}{3} = \frac{1}{3}$, which is not an integer. This means that $\frac{z}{3}$ is not an integer for all values of $z$, which contradicts the assumption that $\frac{z}{3}$ is an integer. Therefore, we have established a contradiction and we must conclude that there does not exist an integer $y$ such that, for every integer $x$ and for every integer $z$, $z = 3(x - y)$.
+\end{proof}
+\noindent\textbf{3. For every integer $x$ there exists an integer $y$ such that $y^2 = x$.}
+\begin{proof}
+    $ $\\ 
+    Suppose that $y$ is an integer. Let $x = 2$, which is an integer.  If we substitute $x = 2$ into $y^2 = x$, we get $y^2 = 2$, which is equivalent to $y = \pm \sqrt{2}$. Since $y$ is an integer, $\pm \sqrt{2}$ must be an integer. By definition, for every integer $z$ there is no integer between $z$ and $z+1$. Since $1$ is an integer, there is no integer between $1$ and $2$. However, the value of $\sqrt{2}$ is between $1$ and $2$, which means that $\sqrt{2}$ is not an integer, which contradicts the assumption that $\sqrt{2}$ is an integer. Therefore, we have established a contradiction and we must conclude that there does not exist an integer $y$ such that $y^2 = x$ for all integers $x$ by counterexample.
+\end{proof} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
