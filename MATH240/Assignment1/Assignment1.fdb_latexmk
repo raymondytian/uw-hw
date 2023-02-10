@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1676007213 "/Users/carina/Documents/uw-hw/MATH240/Assignment1/Assignment1.tex" "Assignment1.pdf" "Assignment1" 1676007215 0
+["pdflatex"] 1676048854 "/Users/carina/Documents/uw-hw/MATH240/Assignment1/Assignment1.tex" "Assignment1.pdf" "Assignment1" 1676048856 0
   "../../images/uw-logo.png" 1671865310 1927180 96ee717e2093a802999e51f5adcb978c ""
-  "/Users/carina/Documents/uw-hw/MATH240/Assignment1/Assignment1.tex" 1676007213 13722 57dae7a497e9d802e438d403d34b6424 ""
+  "/Users/carina/Documents/uw-hw/MATH240/Assignment1/Assignment1.tex" 1676048854 13975 112303c193dfe37cc480959554653cf7 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -256,8 +256,8 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1671862230 4623329 5e28269c2aee4b9e2f0ef6bdcff03654 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1671862317 7874847 27e6362da4d475c1a16208bc210ad255 ""
   "/usr/local/texlive/2022/texmf.cnf" 1671862222 577 209b46be99c9075fd74d4c0369380e8c ""
-  "Assignment1.aux" 1676007214 184 b2a3223b21572ad89fbf4e19fbcfdf57 "pdflatex"
-  "Assignment1.tex" 1676007213 13722 57dae7a497e9d802e438d403d34b6424 ""
+  "Assignment1.aux" 1676048856 184 b2a3223b21572ad89fbf4e19fbcfdf57 "pdflatex"
+  "Assignment1.tex" 1676048854 13975 112303c193dfe37cc480959554653cf7 ""
   (generated)
   "Assignment1.aux"
   "Assignment1.log"
