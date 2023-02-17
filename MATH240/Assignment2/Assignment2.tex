@@ -1,0 +1,235 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[margin=.75in,top=1in,bottom=.5in]{geometry}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{xpatch}
+\usepackage{fix-cm}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{titlesec}
+\usepackage{soul}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\newpg}{\vspace{5mm}}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{gray75}{gray}{0.75}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\textsc{Raymond Tian}}
+\fancyfoot[C]{\thepage}
+\setlength{\footskip}{0mm}
+\titleformat{\chapter}[display]{\filleft\Huge\bfseries}{\fontsize{100}{100}\selectfont\textcolor{black}\thechapter}{1ex}{}[]
+\titleformat*{\section}{\LARGE\bfseries}
+\DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
+\setlength{\footskip}{12.0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Notes on Introductory Discrete Mathematics}
+\author{Raymond Tian}
+\date{December 23, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}  
+\begin{center}
+\textsc{\LARGE University of Wisconsin---Madison}\\[1.5cm] 
+\includegraphics[scale=.1]{../../images/uw-logo.png}\\[1cm] 
+\textsc{\Large Introduction to Discrete Mathematics}\\[0.5cm] 
+\textsc{\large Math 240}\\[0.5cm] 
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 2}\\[0.4cm] 
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Raymond \textsc{Tian}\\ 
+\end{flushleft}
+
+\end{minipage}\\[2cm]
+
+{\large \today}\\[2cm] 
+
+\vfill 
+
+\end{center}
+\end{titlepage}
+
+\pagestyle{empty}
+\newpage
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\Large{Question 1: Proving and disproving quantified statements [5 points]}}
+Prove or disprove the following statements.
+\\[\baselineskip]
+\textbf{1. For every real number $x$ and $y$ such that $x \neq 0$ there exists a real number $z$ such that $xz+y=0$.}
+\begin{proof}
+Let $x$, $y$ and $z$ be real numbers such that $x \neq 0$. If we perform algebra on the equation $xz+y=0$, we get 
+\begin{align}
+xz+y = 0 \\
+xz = -y \\
+z = -\frac{y}{x}
+\end{align}
+Since $z$ can be written as a fraction where both the numerator ($y$) and denominator ($x$) are real numbers, where the denominator is nonzero, we can conclude that $z$ is a real number. Therefore, there exists a real number $z$ such that $xz+y=0$ for all real numbers $x$ and $y$.
+\end{proof}
+\textbf{2. There is an integer $n$ such that $2^n-1$ is prime.}
+\begin{proof}
+Let $n$ be an integer. We will prove that there exists an integer $n$ such that $2^n-1$ is prime. We will do this by showing that $2^n-1$ is prime when $n$ is equal to $3$, which is an integer. By subbing in this value of $n$ into the expression $2^n-1$, we get 
+\begin{align}
+2^3-1=7
+\end{align}
+7 is a prime number, because it is only divisible by 1 and itself. Therefore, there exists an integer $n$ such that $2^n-1$ is prime.
+\end{proof}
+\textbf{3. There is a smallest integer.}
+\begin{proof}
+Let us prove this statement by contradiction. Assume that there is a smallest integer $x$. By definition, if $x$ is an integer, then $x-1$ is also an integer. Since $x-1$ is less than $x$, then $x$ is not the smallest integer, which contradicts our assumption that $x$ is the smallest integer. Therefore, there is no smallest integer.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\Large{Question 2: Proving and disproving implications [5 points]}}
+Prove or disprove the following statements.
+\\[\baselineskip]
+\textbf{1. Let $x,y,z$ be integers. If $x|(y+z)$ then $x|y$ and $x|z$.}
+\begin{proof}
+Let us disprove this statement by counterexample. Let $x,y,z$ be integers such that $x=2,y=3,z=3$. Subbing these values into the expression $x|(y+z)$ gives
+\begin{align}
+2|(3+3) \\
+2|(6) \\
+\end{align}
+Since there exists an integer value $k$ such that $2k=6$, where $k=3$, we can conclude that $2$ divides $6$, which means that $x|(y+z)$ when $x=2,y=3,z=3$. However, $2$ does not divide $3$, because there does not exist an integer $l$ such that $2l=3$. Solving for $l$ gives us $1.5$ which is not an integer because it is between two consecutive integers. Therefore, $x$ does not divide $y$ or $z$ when $x=2,y=3,z=3$. Since the antecedent is true, but the consequent is false, we disprove the implication that if $x|(y+z)$ then $x|y$ and $x|z$.   
+\end{proof}
+\textbf{2. Let $x,y,z$ be integers. If $x|(y+z)$ and $x|y$ then $x|z$.}
+\begin{proof}
+Suppose that $x,y,z$ are integers. If $x|(y+z)$ and $x|y$, that means that there exists an integer $k$ such that $kx=(y+z)$. Let us solve for z in this equation.
+\begin{align}
+kx=(y+z) \\
+kx-y=z \\
+\end{align}
+Since $x$ divides $y$, there exists an integer $l$ such that $lx=y$. Subbing $lx$ into the equation $kx-y=z$ gives us 
+\begin{align}
+kx-lx&=z&\text{\indent which is equivalent to} \\
+(k-l)x&=z
+\end{align}
+Since $k$ and $l$ are integers, then $k-l$ must be an integer. Therefore, $x$ divides $z$. Therefore, if $x|(y+z)$ and $x|y$ then $x|z$.
+\end{proof}
+\textbf{3. Let $x$ and $y$ be positive real numbers. If $xy>400$ then $x>20$ or $y>20$.}
+\begin{proof}
+Let us prove this statement by contrapositive. Suppose that $x$ and $y$ are real numbers such that $x<=20$ and $y<=20$. Then, by using algebra, $xy<=400$. The contrapositive must be true, therefore if $xy>400$, then $x>20$ or $y>20$.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\Large{Question 3: Contradictions [5 points]}}
+Prove that $\sqrt{3}$ is irrational by mimicking the proof from class that $\sqrt{2}$ is irrational. Here is a handy fact we proved in class which will prove useful: For any integer $n$, if $3|n^2$ then $3|n$.
+\begin{proof}
+    Suppose for the sake of contradiction that $\sqrt{3}$ is rational. This means that $\sqrt{3}=\frac{x}{y}$ for some integers $x$ and $y$, with $y\neq 0$. Moreover we may assume without loss of generality, that $x$ and $y$ do not have any common factors. Squaring both sides of the equation gives us $3=\frac{x^2}{y^2}$. Multiplying both sides by $y^2$ gives us $3y^2=x^2$. Since $x^2$ is a multiple of $3$, then $3|x^2$, and using the fact that for any integer $n$, if $3|n^2$ then $3|n$, we can conclude that $3|x$. This means there exists an integer $k$ such that $3k=x$. Substituting $3k$ into $3y^2=x^2$ gives us $3y^2=(3k)^2$, which simplifies to $3y^2=9k^2$. Dividing both sideds by $3$ gives us $y^2=3k^2$. Since $y^2$ is a multiple of $3$, then $3|y^2$, therefore $3|y$. Since $x$ and $y$ are both divisible by $3$, they share a common of factor of $3$, which contradicts the fact that $x$ and $y$ do not have any common factors in order for $\sqrt{3}$ to be rational. Therefore $\sqrt{3}$ is irrational.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\Large{Question 4: Proofs by cases [5 points]}}
+Prove the following statements.
+\\[\baselineskip]
+\textbf{1. Let $x$ and $y$ be integers. If $xy$ and $x+y$ are even then both $x$ and $y$ are even.}
+\begin{proof}
+Let us prove this statement by contrapositive and by cases. Suppose that $x$ and $y$ are integers such that either $x$ or $y$ is odd. Then, $xy$ or $x+y$ is odd. Since swapping $x$ and $y$ in either expression makes no difference, we only have to consider the cases where $x$ is an odd integer and $y$ is an even integer, and if $x$ and $y$ are both odd integers. For the first case, let us assume that $x$ is odd and $y$ is even. Then, $x$ can be rewritten as $2j+1$ for some integer $j$ and $y$ can be rewritten as $2k$ for some integer $k$. Then $x+y$ can be rewritten as $2j+1+2k$ which can be simplified to $2(j+k)+1$. Since $j$ and $k$ are integers, then $j+k$ is an integer, therefore $x+y$ is odd. For our second case, let us assume that $x$ is odd and $y$ is odd. Then, $x$ can be rewritten as $2j+1$ for some integer $j$ and $y$ can be rewritten as $2k+1$ for some integer $k$. Subbing these values into $xy$ gives $(2j+1)(2k+1)$. This is equivalent to $(2j)(2k)+2j+2k+1$which can be rewritten as $2(jk+j+k)+1$. Since $j$ and $k$ are both integers, then $jk$ and $j+k$ are integers, therefore $xy$ is odd. Again, swapping $x$ and $y$ makes no difference, so the remaining cases are redundant. Therefore, in all cases where either $x$ or $y$ is odd, $xy$ or $x+y$ is odd. In conclusion, we prove that if either $x$ or $y$ are odd integers, then $xy$ or $x+y$ is odd. Therefore, by contrapositive, we prove that if $xy$ and $x+y$ are even then both $x$ and $y$ are even.
+\end{proof}
+\textbf{2. Let $x$ be a real number. If $x^2-3x-10<0$ then $-2<x<5$.}
+\begin{proof}
+Let us prove this statement by contrapositive and by cases. Suppose that $x$ is an integer. If $x \leq -2$ or $x \geq 5$ then $x^2-3x-10 \geq 0$. We have to prove that the consequent is true given the cases where 
+\begin{enumerate}
+    \item $x < -2$
+    \item $x = -2$
+    \item $x = 5$
+    \item $x > 5$
+\end{enumerate}
+\begin{itemize}
+    \item Case 1: $x < -2$. Factoring $x^2-3x-10$ gives us $(x-5)(x+2)$. Since $x < -2$, then $x-5 < 0$ and $x+2 < 0$. Since the product of two negative integers is a positive integer, $x^2-3x-10 \geq 0$.
+    \item Case 2: $x = -2$. Factoring $x^2-3x-10$ gives us $(x-5)(x+2)$. Subbing in $x=-2$ gives us $(-2-5)(-2+2)$, which is equal to $0$, which satisfies the assumption that $x^2-3x-10 \geq 0$.
+    \item Case 3: $x = 5$. Factoring $x^2-3x-10$ gives us $(x-5)(x+2)$. Subbing in $x=5$ gives us $(5-5)(5+2)$, which is equal to $0$, which satisfies the assumption that $x^2-3x-10 \geq 0$.
+    \item Case 4: $x > 5$. Factoring $x^2-3x-10$ gives us $(x-5)(x+2)$. Since $x > 5$, then $x-5 > 0$ and $x+2 > 0$. Since the product of two positive integers is a positive integer, $x^2-3x-10 \geq 0$.
+\end{itemize}
+In conclusion, we have shown that for all values of $x$ where $x \leq -2$ or $x \geq 5$, $x^2-3x-10 \geq 0$. Therefore, by contrapositive, we have shown that if $x^2-3x-10<0$ then $-2<x<5$.
+\end{proof}
+\textbf{3. Let $x$ and $y$ be integers. If $x^3(y+5)$ is odd then $x$ is odd and $y$ is even.}
+\begin{proof}
+Let us prove this statement by contrapositive and by cases. Suppose that $x$ and $y$ are integers where if $x$ is even or $y$ is odd, then $x^3(y+5)$ is even. We only need to consider two cases where
+\begin{enumerate}
+    \item $x$ is even
+    \item $y$ is odd
+\end{enumerate}
+\begin{itemize}
+    \item Case 1: $x$ is even. Let $x=2j$ for some integer $j$. Then $x^3(y+5)$ can be rewritten as $2^3j^3(y+5)$. Since $j$ is an integer, then $j^3$ is an integer. Since $y$ is an integer, then $y+5$ is an integer. $2^3j^3(y+5)$ can be rewritten as $2(2^2j^3(y+5))$ where $2^2j^3(y+5)$ is an integer, therefore $x^3(y+5)$ is even when $x$ is even.
+    \item Case 2: $y$ is odd. Let $y=2k+1$ for some integer $k$. Then $x^3(y+5)$ can be rewritten as $x^3(2k+1+5)$. Since $x$ is an integer, then $x^3$ is an integer. Since $k$ is an integer, then $2k+1+5$ is an integer. $x^3(2k+1+5)$ can be rewritten as $2((k+3)x^3)$ where $(k+3)x^3$ is an integer, therefore $x^3(y+5)$ is even when $y$ is odd.
+\end{itemize}
+In conclusion, we have shown that for if $x$ is even or $y$ is odd, then $x^3(y+5)$ is even. Therefore, by contrapositive, we have shown that if $x^3(y+5)$ is odd then $x$ is odd and $y$ is even.
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%G
+\end{document}
