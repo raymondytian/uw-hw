@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[margin=.75in,top=1in,bottom=.5in]{geometry}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{graphicx} 
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{xpatch}
+\usepackage{fix-cm}
+\usepackage{titlesec}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{titlesec}
+\usepackage{soul}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\newpg}{\vspace{5mm}}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+\definecolor{gray75}{gray}{0.75}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[R]{\textsc{Raymond Tian}}
+\fancyfoot[C]{\thepage}
+\setlength{\footskip}{12pt}
+\titleformat{\chapter}[display]{\filleft\Huge\bfseries}{\fontsize{100}{100}\selectfont\textcolor{black}\thechapter}{1ex}{}[]
+\titleformat*{\section}{\LARGE\bfseries}
+\DeclarePairedDelimiterX\set[1]\lbrace\rbrace{\def\given{\;\delimsize\vert\;}#1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Notes on Introductory Discrete Mathematics}
+\author{Raymond Tian}
+\date{December 23, 2022}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}  
+\begin{center}
+\textsc{\LARGE University of Wisconsin---Madison}\\[1.5cm] 
+\includegraphics[scale=.1]{../../images/uw-logo.png}\\[1cm] 
+\textsc{\Large Introduction to Discrete Mathematics}\\[0.5cm] 
+\textsc{\large Math 240}\\[0.5cm] 
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Assignment 3}\\[0.4cm] 
+\HRule \\[1.5cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Raymond \textsc{Tian}\\ 
+\end{flushleft}
+
+\end{minipage}\\[2cm]
+
+{\large \today}\\[2cm] 
+
+\vfill 
+
+\end{center}
+\end{titlepage}
+
+\pagestyle{empty}
+\newpage
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\Large{Question 1: Set identities [5 points]}}
+Consider the sets $A = \{1, 2\}$ and $B = \{3, 4\}$. Verify that, for these sets, the following identies hold: 
+\begin{enumerate}
+    \item $A \setminus (B \cap A) = A$ and 
+    \item $A \setminus (B \setminus A) = A$.
+\end{enumerate} 
+Prove that, for \textit{arbitary} sets $A$ and $B$, item 2 above remains true but item 1 may fail to hold.
+\\[\baselineskip]
+\textbf{Item 1:}\\
+Let $A = \{1, 2\}$ and $B = \{3, 4\}$. Then, $B \cap A = \emptyset$. Therefore, $A \setminus (B \cap A) = A \setminus \emptyset = A$. Now instead, if $A$ and $B$ are arbitary sets, then $A \setminus (B \cap A)$ is not necessarily $A$ because if $B \cap A \neq \emptyset$, then $\exists x \in A ( x \in B \cap A )$. Therefore, the cardinality of $A \setminus (B \cap A)$ is strictly less than the cardinality of $A$, so $A \setminus (B \cap A) \neq A$ if $A \cap B \neq \emptyset$.
+\\[\baselineskip]
+\textbf{Item 2:}\\
+Let $A = \{1, 2\}$ and $B = \{3, 4\}$. Then, $B \setminus A = B$. Therefore, $A \setminus (B \setminus A) = A \setminus B = A$. Now, let us consider this identity if $A$ and $B$ are arbitary sets. For all $x$ in $A$, $x$ cannot be in $B \setminus A$. Since $x\in A$ and $x \notin B \ A$, then $x \in A \setminus (B \setminus A)$. Therefore $A \subseteq A \setminus (B \setminus A)$. By definition, $A \setminus (B \setminus A) \subseteq A$. Therefore, $A \setminus (B \setminus A) = A$ because they are subspaces of each other. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{\Large{Question 2: Injectivity, surjectivity, and bijectivity [5 points]}}
+For each of the functions below, determine and prove whether or not it is injective, surjective, and bijective.
+\begin{enumerate}
+    \item $f:\{0,1\}^3 \rightarrow \{0, 1\}^4$ is given by adding a copy of the first bit to the end of the binary string. In other words $f(xyz) = xyzx$.
+    \item Let $S = \{1, 2, 3\}$ and consider $g: \mathcal{P}(S) \rightarrow \{0, 1, 2, 3\}$ given by $g(A) = |A|$, where recall that for any set $A$, $|A|$ denotes its cardinality.
+\end{enumerate}
+\textbf{Item 1:}
+\begin{proof}
+    $f$ is injective because for any binary string $abc \in \{0, 1\}^3$, $f(abc) = abcx$ where some $x = a$. Therefore, for any other binary string in $\{0, 1\}^3$ that isn't $abc$, the output will not contain $abc$, so $f$ is injective because there does not exist $x,y \in \{0,1\}^3$ such that $f(x) = f(y)$. We will prove that $f$ is not surjective by contradiction. For the sake of contradiction, suppose $abc$ is a binary string in $\{0, 1\}^3$ such that $f(abc) = 0011$. $0011$ is in $\{0, 1\}^4$. Then $a$ must be equal to $0$ and $1$, which is impossible. Therefore, $f$ is not surjective. Since $f$ is not injective and surjective, then $f$ is not bijective.
+\end{proof} 
+\textbf{Item 2:}
+\begin{proof}
+    We will prove that $g$ is not injective by contradiction. For the sake of contradiciton, suppose that $g$ is injective. Then $\forall (A_1, A_2) \in \mathcal{P}(S)$ such that $S = \{1, 2, 3\}$ and $A_1 \neq A_2, (g(A_1) \neq g(A_2))$. However, suppose that $A_1 = \{1\}$ and $A_2 = \{2\}$. Then $g(A_1) = |A_1| = 1$ and $g(A_2) = |A_2| = 1$. Therefore $g(A_1) = g(A_2)$, which is a contradiction, so $g$ is not injective. We will prove that $g$ is surjective by exhaustion. The codomain of $g$ is $0, 1, 2,$ and $3$. For $g$ to be surjective, $\forall x \in \{0, 1, 2, 3\} \: \exists A \in \mathcal{P}(S) \: (g(A)=x)$. Let $A = \emptyset$, then $g(A) = |\emptyset| = 0$. Let $A = \{1\}$, then $g(A) = |{1}| = 1$. Let $A = \{1, 2\}$, then $g(A) = |\{1, 2\}| = 2.$ Finally, let $A = \{1, 2, 3\}$, then $g(A) = |\{1, 2, 3\}| = 3.$ All of these values of $A$ are in $\mathcal{P}(S)$ and all values in $\{0, 1, 2, 3\}$ is equal to $g(A)$ for some A. Therefore $g$ is surjective. Since $g$ is not injective and surjective, $g$ is not bijective.  
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
